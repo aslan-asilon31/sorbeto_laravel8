@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Visitor\VisitorController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//visitor
+Route::get('/', [VisitorController::class, 'index'])->name('visitor');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('charts');
