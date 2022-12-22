@@ -13,10 +13,9 @@ use DB;
 class DashboardController extends Controller
 {
 
-        
+
     public function index()
     {
-
         $groups = DB::table('users')
         ->select('age', DB::raw('count(*) as total'))
         ->groupBy('age')

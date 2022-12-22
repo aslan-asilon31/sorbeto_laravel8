@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Visitor\VisitorController;
+use App\Http\Controllers\EmployeeController;
+
 
 
 /*
@@ -20,3 +22,5 @@ use App\Http\Controllers\Visitor\VisitorController;
 Route::get('/', [VisitorController::class, 'index'])->name('visitor');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('charts');
+
+Route::get('/employee', [EmployeeController::class, 'index'])->name('employees');
