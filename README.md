@@ -12,5 +12,17 @@ We currently offer the following flavors of sorbet:
 
 Each flavor has its own directory within the flavors directory, containing all the necessary code and documentation for that flavor.
 
-### long ScreenShoot
-![long-ss](https://user-images.githubusercontent.com/116990574/205667774-ab6dcfa9-cd31-4b90-99f2-151a1ffd21ea.png)
+### ScreenShoot
+
+![sorbeto1](https://user-images.githubusercontent.com/116990574/209089171-a51e52d7-2c27-464f-8cd6-b0ce572dbd84.png)
+
+![sorbeto2](https://user-images.githubusercontent.com/116990574/209089198-1abc915e-9f19-484d-8727-e899efe7503f.png)
+
+![sorbeto3](https://user-images.githubusercontent.com/116990574/209089221-51226a33-a950-406b-bc0f-4c983165e713.png)
+
+![sorbeto4](https://user-images.githubusercontent.com/116990574/209089252-f23b3281-c253-4c1f-a944-9df14cb4ff05.png)
+
+![sorbeto5](https://user-images.githubusercontent.com/116990574/209089270-caa9ca4f-65af-49d8-8f5b-e5a4e9adbb26.png)
+
+![sorbeto6](https://user-images.githubusercontent.com/116990574/209089323-c55a9012-a749-4811-8cb1-d430744cddbb.png)
+
