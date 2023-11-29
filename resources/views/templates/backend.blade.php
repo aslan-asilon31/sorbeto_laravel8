@@ -9,11 +9,11 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="assets_backend/AdminLTE-master/plugins/fontawesome-free/css/all.min.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="assets_backend/AdminLTE-master/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="assets_backend/AdminLTE-master/dist/css/adminlte.min.css">
+
+  <link rel="stylesheet" href="{{ asset('assets_backend/AdminLTE-master/dist/css/adminlte.min.css'); }}">
+  <link rel="stylesheet" href="{{ asset('assets_backend/AdminLTE-master/plugins/overlayScrollbars/css/OverlayScrollbars.min.css'); }}">
+  <link rel="shortcut icon" href="{{ asset('assets_backend/AdminLTE-master/plugins/fontawesome-free/css/all.min.css'); }}" />
+  @stack('css')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -191,29 +191,22 @@
 <!-- REQUIRED SCRIPTS -->
 
 
-@yield('js')
+@stack('js')
 
 
 
-<!-- jQuery -->
-<script src="assets_backend/AdminLTE-master/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="assets_backend/AdminLTE-master/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- overlayScrollbars -->
-<script src="assets_backend/AdminLTE-master/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-<!-- AdminLTE App -->
-<script src="assets_backend/AdminLTE-master/dist/js/adminlte.js"></script>
 
-<!-- PAGE PLUGINS -->
-<!-- jQuery Mapael -->
-<script src="assets_backend/AdminLTE-master/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
-<script src="assets_backend/AdminLTE-master/plugins/raphael/raphael.min.js"></script>
-<script src="assets_backend/AdminLTE-master/plugins/jquery-mapael/jquery.mapael.min.js"></script>
-<script src="assets_backend/AdminLTE-master/plugins/jquery-mapael/maps/usa_states.min.js"></script>
-<!-- ChartJS -->
-<script src="assets_backend/AdminLTE-master/plugins/chart.js/Chart.min.js"></script>
+<link rel="shortcut icon" href="{{ asset('assets_backend/AdminLTE-master/dist/js/adminlte.js'); }}" />
+<link rel="shortcut icon" href="{{ asset('assets_backend/AdminLTE-master/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js'); }}" />
+<link rel="shortcut icon" href="{{ asset('assets_backend/AdminLTE-master/plugins/bootstrap/js/bootstrap.bundle.min.js'); }}" />
+<link rel="shortcut icon" href="{{ asset('assets_backend/AdminLTE-master/plugins/jquery/jquery.min.js'); }}" />
+<link rel="shortcut icon" href="{{ asset('assets_backend/AdminLTE-master/plugins/jquery-mousewheel/jquery.mousewheel.js'); }}" />
+<link rel="shortcut icon" href="{{ asset('assets_backend/AdminLTE-master/plugins/raphael/raphael.min.js'); }}" />
+<link rel="shortcut icon" href="{{ asset('assets_backend/AdminLTE-master/plugins/jquery-mapael/jquery.mapael.min.js'); }}" />
+<link rel="shortcut icon" href="{{ asset('assets_backend/AdminLTE-master/plugins/jquery-mapael/maps/usa_states.min.js'); }}" />
+<link rel="shortcut icon" href="{{ asset('assets_backend/AdminLTE-master/plugins/chart.js/Chart.min.js'); }}" />
+<link rel="shortcut icon" href="{{ asset('assets_backend/AdminLTE-master/dist/js/pages/dashboard2.js'); }}" />
 
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="assets_backend/AdminLTE-master/dist/js/pages/dashboard2.js"></script>
+
 </body>
 </html>

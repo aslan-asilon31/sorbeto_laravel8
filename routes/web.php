@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Visitor\VisitorController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\UserController;
 
 
 
@@ -24,3 +25,12 @@ Route::get('/', [VisitorController::class, 'index'])->name('visitor');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('charts');
 
 Route::get('/employee', [EmployeeController::class, 'index'])->name('employees');
+
+
+
+Route::resource('users', UserController::class);
+Route::get('/userslist', [UserController::class, 'getdata'])->name('users.list');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>iCREAM - Ice Cream Shop Website Template</title>
+    <title>Sorbeto - Ice Cream Shop </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -82,7 +82,7 @@
                         <a href="product.html" class="nav-item nav-link">Product</a>
                     </div>
                     <a href="index.html" class="navbar-brand mx-5 d-none d-lg-block">
-                        <h1 class="m-0 display-4 text-primary"><span class="text-secondary">i</span>CREAM</h1>
+                        <h1 class="m-0 display-4 text-primary"><span class="text-secondary">S</span>orbeto</h1>
                     </a>
                     <div class="navbar-nav mr-auto py-0">
                         <a href="service.html" class="nav-item nav-link">Service</a>
