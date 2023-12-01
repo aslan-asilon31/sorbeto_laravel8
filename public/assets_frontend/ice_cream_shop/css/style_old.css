@@ -51,9 +51,6 @@ html {
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-body{
-    background-color: #F195B2  !important;
-}
 
 article,
 aside,
@@ -4304,8 +4301,7 @@ input[type="button"].btn-block {
 .nav-pills .nav-link.active,
 .nav-pills .show>.nav-link {
     color: #fff;
-    /* background-color: #F195B2;  */
-    /* navlink1 */
+    background-color: #F195B2;
 }
 
 .nav-fill>.nav-link,
@@ -10142,58 +10138,9 @@ h6,
     outline: none;
 }
 
-/* ========================= animation */
-.card-ice-cream-image{
-    animation: bounce1 1s ease infinite;
-}
-
-.font-awesome {
-    text-align:center;
-    color: #F195B2;
-    padding : 10px;
-}
-
-
 .navbar-light .navbar-nav .nav-link:hover,
 .navbar-light .navbar-nav .nav-link.active {
     color: #F195B2;
-    text-decoration: underline;
-    font-weight:bolder;
-    background-color:ghostwhite;
-}
-
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-20px);
-    }
-    60% {
-        transform: translateY(-10px);
-    }
-}
-
-@keyframes bounce1 {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-8px);
-    }
-    60% {
-        transform: translateY(-6px);
-    }
-    80% {
-        transform: translateY(-3px);
-    }
-}
-
-.navbar-light .navbar-nav .nav-link:hover,
-.navbar-light .navbar-nav .nav-link.active::after {
-    color: #F195B2;
-    text-decoration: underline;
-    animation: bounce 1s ease infinite;
 }
 
 @media (max-width: 991.98px) {
@@ -10222,9 +10169,8 @@ h6,
 }
 
 .page-header {
-    /* background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../img/header.jpg), no-repeat center center; */
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../img/header.jpg), no-repeat center center;
     background-size: cover;
-    background-color: #F195B2  !important;
 }
 
 .section-title::before {

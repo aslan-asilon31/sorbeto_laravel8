@@ -1,5 +1,8 @@
 @extends('templates/backend')
 
+@section('title', ' User Page')
+@section('titleslug', ' User Page / List User')
+
 @section('content')
 
 <section class="content">
@@ -8,7 +11,7 @@
           <div class="row">
               <div class="col-lg-12">
 
-                <button type="button" class="btn btn-gradient-primary btn-fw collapsible" style="width: 100%">Advanced Search</button>
+                <button type="button" class="btn btn-primary btn-fw collapsible" style="width: 100%">Advanced Search</button>
                 <div class="content" style="display: none; padding:20px; background-color:indigo;" >
                     <div class="row">
                         <div class="col-6" style="margin-top:10px">
@@ -30,6 +33,18 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($users as $user)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>
+                                    <button class="btn btn-info" onclick="showUser({{ $user->id }})"> Log </button>
+                                    <a class="btn btn-success" href="{{ route('users.edit', $user->id) }}"> Edit  </a>
+                                    <button class="btn btn-danger" onclick="deleteUser({{ $user->id }})"> Delete </button>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>   
@@ -91,13 +106,7 @@
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'name', name: 'name'},
-            {data: 'email', name: 'email'},
-            {
-                data: 'action', 
-                name: 'action', 
-                orderable: true, 
-                searchable: false
-            },
+            {data: 'email', name: 'email'}
         ]
     });
 
@@ -137,6 +146,10 @@
         }
       });
     }
+</script>
+
+
+<script>
 </script>
     
 @endpush

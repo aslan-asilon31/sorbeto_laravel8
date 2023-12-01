@@ -14,7 +14,7 @@ class VisitorController extends Controller
      */
     public function index()
     {
-        return view('templates/frontend');
+        return view('visitor.index');
     }
 
     /**
