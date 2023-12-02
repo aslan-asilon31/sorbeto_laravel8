@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\StatusMasterController;
 use App\Http\Controllers\RolesMasterController;
 use App\Http\Controllers\IceCreamController;
+use App\Http\Controllers\TeamSalesController;
 
 
 
@@ -51,3 +52,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/statusmaster', [StatusMasterController::class, 'index'])->name('statusmaster.index');
 Route::get('/rolesmaster', [RolesMasterController::class, 'index'])->name('rolesmaster.index');
 Route::get('/icecream', [IceCreamController::class, 'index'])->name('icecream.index');
+Route::get('/teamsales', [TeamSalesController::class, 'index'])->name('teamsales.index');

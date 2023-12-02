@@ -124,7 +124,7 @@
           </li>
           <li class="nav-item">
             <a href="/users" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="nav-icon fas fa-users"></i>
             <p>
                 Users
             </p>
@@ -133,7 +133,7 @@
 
           <li class="nav-item">
             <a href="{{ route('statusmaster.index') }}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-tag"></i>
               <p>
                 Status Master
               </p>
@@ -142,7 +142,7 @@
 
           <li class="nav-item">
             <a href="{{ route('rolesmaster.index') }}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-umbrella"></i>
               <p>
                 Roles Master
               </p>
@@ -151,7 +151,7 @@
 
           <li class="nav-item">
             <a href="{{ route('icecream.index') }}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-ice-cream"></i>
               <p>
                 Ice Cream
               </p>
@@ -163,6 +163,7 @@
                 <a class="nav-link" href="{{ route('logout') }}"
                   onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
+                    <i class="nav-icon fas fa-sign-out-alt"></i>
                     {{ __('Logout') }}
                 </a>
 
