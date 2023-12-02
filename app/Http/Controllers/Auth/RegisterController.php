@@ -11,42 +11,18 @@ use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
+
 
     use RegistersUsers;
 
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/dashboard';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
+  
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -64,7 +40,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $randomUserId = null;
+
+        do {
+            $randomUserId = mt_rand(100000, 999999); // Adjust the range based on your requirements
+        } while (User::where('user_id', $randomUserId)->exists());
+
+        
+
         return User::create([
+            'user_id' => $randomUserId,
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),

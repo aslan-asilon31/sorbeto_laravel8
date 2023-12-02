@@ -1,7 +1,7 @@
 @extends('templates/backend')
 
-@section('title', ' User Edit Page')
-@section('titleslug', ' User Page / Edit User')
+@section('title', ' User Add Page')
+@section('titleslug', ' User Page / Add User')
 
 @section('content')
 
@@ -16,14 +16,13 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="{{ route('user.update', $user->user_id) }}" method="POST">
-                      @csrf
-                      @method('PUT')
+                    <form action="{{ route('user.store') }}" method="POST">
+                    {{-- <form action="" method="POST"> --}}
+                        @csrf
                       <div class="card-body">
                         <div class="form-group">
                             <label class="font-weight-bold">Name </label>
-                            <input type="hidden" class="" name="user_id" value="{{ old('user_id', $user->user_id) }}" >
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $user->name) }}" placeholder="Masukkan Nama">
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="" placeholder="Masukkan Nama">
                         
                             <!-- error message untuk name -->
                             @error('name')
@@ -34,7 +33,7 @@
                         </div>
                         <div class="form-group">
                             <label class="font-weight-bold">Email </label>
-                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email', $user->email) }}" placeholder="Masukkan Email">
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="" placeholder="Masukkan Email">
                         
                             <!-- error message untuk name -->
                             @error('email')
@@ -47,9 +46,6 @@
                       <!-- /.card-body -->
                       <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        @if(url()->previous())
-                            <a class="btn btn-warning" href="{{ url()->previous() }}">Go Back</a>
-                        @endif
                       </div>
                     </form>
                   </div>

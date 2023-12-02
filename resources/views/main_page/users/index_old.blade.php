@@ -11,8 +11,7 @@
           <div class="row">
               <div class="col-lg-12">
 
-                <button type="button" class="btn btn-primary btn-fw collapsible mb-3" style="width: 100%">Advanced Search</button>
-                <a href="{{ route('user.create') }}" type="button" class="btn btn-primary  mb-3" style="width: 100%">Add User <i class="fa fa-plus"></i> </a>
+                <button type="button" class="btn btn-primary btn-fw collapsible" style="width: 100%">Advanced Search</button>
                 <div class="content" style="display: none; padding:20px; background-color:indigo;" >
                     <div class="row">
                         <div class="col-6" style="margin-top:10px">
@@ -34,21 +33,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($users as $user)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>
-                                    <button class="btn btn-info" onclick="showUser({{ $user->user_id }})"> Log </button>
-                                    <a class="btn btn-success" href="{{ route('user.edit', $user->user_id) }}"> Edit  </a>
-                                    <button class="btn btn-danger" onclick="deleteUser({{ $user->user_id }})"> Delete </button>
-                                </td>
-                            </tr>
-                        @endforeach
+                      
                     </tbody>
                 </table>
-                {{ $users->links() }}
             </div>   
           </div>
           <!-- /.row -->
@@ -84,51 +71,58 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 <script type="text/javascript">
-  $(function () {
-    
+ $(function () {
     var table = $('.yajra-datatable').DataTable({
         processing: true,
         serverSide: true,
         ajax: {
-            url: "{{ route('user.list') }}",
-                data: function (d) {
-                    d.name = $('.searchName').val(),
-                    d.email = $('.searchEmail').val(),
-                    d.search = $('input[type="search"]').val()
+            url: "{{ route('users.list') }}",
+            data: function (d) {
+                d.name = $('.searchName').val();
+                d.email = $('.searchEmail').val();
+                d.search = $('input[type="search"]').val();
             }
         },
-        order: [
-            [1, 'desc'] // Adjust the sorting based on your requirement
-        ],
         success: function (data) {
-            alert('Data loaded successfully:', data);
+            console.log('Data adaa:', data);
+            // Lakukan tindakan setelah data berhasil dimuat
         },
-        // pageLength: 10,
+        error: function (xhr, error, thrown) {
+            console.log('DataTables error:', error, thrown);
+            // Handle error, jika diperlukan
+        },
         columns: [
-            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'name', name: 'name', searchable: true},
-            {data: 'email', name: 'email'}
-        ]
+            { data: 'DT_RowIndex', name: 'DT_RowIndex' },
+            { data: 'name', name: 'name' },
+            { data: 'email', name: 'email' },
+            { data: 'action', name: 'action', orderable: false, searchable: false }
+        ],
+        drawCallback: function () {
+            console.log('DataTables draw callbak');
+            // Add any additional customization or logic after DataTables draws
+        },
+        initComplete: function () {
+            console.log('DataTables initialized successfully');
+        }
     });
 
-    $(".searchName").keyup(function(){
+    // Event handlers for search inputs
+    $(".searchName, .searchEmail").keyup(function () {
         table.draw();
     });
 
-    $(".searchEmail").keyup(function(){
-        table.draw();
+    // Additional event handlers if needed
+
+    // Handle custom actions (e.g., showUser, editUser, deleteUser)
+    $('.yajra-datatable').on('click', '.btn-info', function () {
+        var userId = $(this).data('userid');
+        showUser(userId);
     });
 
-    $(".searchRoleId").keyup(function(){
-        table.draw();
-    });
+    // Add similar handlers for edit and delete buttons
 
-    $(".searchStatus").keyup(function(){
-        table.draw();
-    });
+});
 
-    
-  });
 </script>
 
 {{-- //collapse --}}

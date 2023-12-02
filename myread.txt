@@ -4,3 +4,4 @@ https://codelapan.com/post/integrasi-google-analytics-dengan-laravel-8
 
 
 
+https://makitweb.com/create-helper-function-and-use-it-in-laravel/

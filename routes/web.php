@@ -26,17 +26,21 @@ Route::get('/', [VisitorController::class, 'index'])->name('visitor');
 Route::get('/employee', [EmployeeController::class, 'index'])->name('employees');
 
 
-Route::middleware(['auth'])->group(function () {
+// Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('charts');
 
 
-    Route::get('/users', [UserController::class, 'index'])->name('users.index');
-    Route::get('/userslist', [UserController::class, 'getdata'])->name('users.list');
-    Route::get('/user/edit/{user}', [UserController::class, 'edit'])->name('users.edit');
-    Route::post('/user/update/{user}', [UserController::class, 'update'])->name('users.update');
+    Route::get('/users', [UserController::class, 'index'])->name('user.index');
+    Route::get('/userslist', [UserController::class, 'getdata'])->name('user.list');
+    Route::get('/user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
+    Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
+    Route::put('/user/update/{user}', [UserController::class, 'update'])->name('user.update');
+
+    // Route::put('/user/update/{user}', [UserController::class, 'update'])->name('user.update');
+    Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
 
     // Route::get('/users/edit', [UserController::class, 'editdata'])->name('users.edit');
-});
+// });
 
 // Route::resource('users', UserController::class);
 // Route::get('/users/edit/{user}', [UserController::class, 'edit'])->name('users.edit');
