@@ -1,7 +1,7 @@
 @extends('templates/backend')
 
-@section('title', ' User Page')
-@section('titleslug', ' User Page / List User')
+@section('title', ' Roles Master Page')
+@section('titleslug', ' Roles Master Page / List Roles Master')
 
 @section('content')
 
@@ -11,18 +11,6 @@
         <!-- Info boxes -->
         <div class="row">
               <div class="col-lg-12">
-                <button type="button" class="btn btn-primary btn-fw collapsible mb-3" style="width: 100%">Advanced Search</button>
-                <a href="{{ route('user.create') }}" type="button" class="btn btn-primary  mb-3" style="width: 100%">Add User <i class="fa fa-plus"></i> </a>
-                <div class="content" style="display: none; padding:20px; background-color:indigo;" >
-                    <div class="row">
-                        <div class="col-6" style="margin-top:10px">
-                            <input type="text" name="name" class="form-control searchName" placeholder="Search for Name Only...">
-                        </div>
-                        <div class="col-6" style="margin-top:10px">
-                            <input type="text" name="email" class="form-control searchEmail" placeholder="Search for Email Only...">
-                        </div>
-                    </div>
-                </div>
 
                 <div class="modal" id="progressModal">
                     <div class="modal-dialog">
@@ -56,37 +44,23 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Roles</th>
+                            <th>Roles ID</th>
                             <th>Status</th>
-                            <th>Action</th>
+                            <th>Name</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($users as $user)
+                        @foreach($rolesmasters as $row)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ $user->roles_id_name }}</td>
-                                <td>{{ $user->status_id_name }}</td>
-                                <td>
-                                    <a class=" btn-sm btn-primary" href="{{ route('user.historylog', $user->user_id) }}"> <i class="fa fa-wrench"></i>  </a>
-                                    <a class="btn btn-sm btn-success" href="{{ route('user.edit', $user->user_id) }}"> <i class="fa fa-edit"></i>  </a>
-                                    <form action="{{ route('user.delete', $user->user_id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <!-- Add your form fields and delete button here -->
-                                        <button class="btn btn-sm btn-danger" type="submit"><i class="fa fa-trash"></i> </button>
-                                    </form>
-                                    
-                                </td>
+                                <td>{{ $row->roles_id }}</td>
+                                <td>{{ $row->status_name }}</td>
+                                <td>{{ $row->name }}</td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
-                {{-- {{ $users->links() }} --}}
+                {{-- {{ $statusmasters->links() }} --}}
             </div>   
           </div>
           <!-- /.row -->
@@ -156,7 +130,7 @@ $(document).ready(function () {
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-<script type="text/javascript">
+{{-- <script type="text/javascript">
   $(function () {
     
     var table = $('.yajra-datatable').DataTable({
@@ -203,7 +177,7 @@ $(document).ready(function () {
 
     
   });
-</script>
+</script> --}}
 
 {{-- //collapse --}}
 <script>

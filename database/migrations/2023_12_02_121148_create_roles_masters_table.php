@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIceCreamsTable extends Migration
+class CreateRolesMastersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,11 @@ class CreateIceCreamsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ice_creams', function (Blueprint $table) {
+        Schema::create('roles_masters', function (Blueprint $table) {
             $table->id();
-            $table->string('ice_cream_id')->nullable();
+            $table->string('roles_id')->nullable();
             $table->string('status_id')->nullable();
-            $table->string('flavor')->nullable();
-            $table->string('color')->nullable();
-            $table->integer('price')->nullable();
-            $table->integer('stock')->nullable();
-            $table->string('type')->nullable();
+            $table->string('name')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +29,6 @@ class CreateIceCreamsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ice_creams');
+        Schema::dropIfExists('roles_masters');
     }
 }

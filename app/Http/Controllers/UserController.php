@@ -16,7 +16,19 @@ class UserController extends Controller
 {
     public function index(){
 
-        $users = User::latest()->paginate(10);
+        $query = "SELECT 
+                        a.*,
+                        b.name as status_id_name,
+                        c.name as roles_id_name
+                  FROM users a
+                  LEFT JOIN status_masters b
+                  ON b.status_id = a.is_active
+                  LEFT JOIN roles_masters c
+                  ON c.roles_id = a.role_id
+                ";
+        $users = DB::connection('mysql')->select($query);
+
+        // $users = User::latest()->paginate(10);
         // dd($users);
         return view('main_page.users.index', compact('users'));
 
@@ -213,7 +225,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $query = "SELECT * FROM users where user_id = $id";
+        $query = "SELECT 
+                    a.* 
+                  FROM users 
+                  WHERE user_id = $id";
         $user = DB::connection('mysql')->select($query);
     
         // Check if the user exists

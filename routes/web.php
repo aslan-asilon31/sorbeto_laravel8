@@ -5,6 +5,9 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Visitor\VisitorController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\StatusMasterController;
+use App\Http\Controllers\RolesMasterController;
+use App\Http\Controllers\IceCreamController;
 
 
 
@@ -28,8 +31,6 @@ Route::get('/employee', [EmployeeController::class, 'index'])->name('employees')
 
 // Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('charts');
-
-
     Route::get('/users', [UserController::class, 'index'])->name('user.index');
     Route::get('/userslist', [UserController::class, 'getdata'])->name('user.list');
     Route::get('/user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
@@ -41,13 +42,13 @@ Route::get('/employee', [EmployeeController::class, 'index'])->name('employees')
     // Route::put('/user/update/{user}', [UserController::class, 'update'])->name('user.update');
     Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
 
-    // Route::get('/users/edit', [UserController::class, 'editdata'])->name('users.edit');
-// });
-
-// Route::resource('users', UserController::class);
-// Route::get('/users/edit/{user}', [UserController::class, 'edit'])->name('users.edit');
-// Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
-
+    
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+Route::get('/statusmaster', [StatusMasterController::class, 'index'])->name('statusmaster.index');
+Route::get('/rolesmaster', [RolesMasterController::class, 'index'])->name('rolesmaster.index');
+Route::get('/icecream', [IceCreamController::class, 'index'])->name('icecream.index');

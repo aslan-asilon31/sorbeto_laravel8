@@ -5,21 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class IceCream extends Model
+class RolesMaster extends Model
 {
     use HasFactory;
 
-    
-    protected $table = 'ice_creams';
-    protected $primaryKey = 'ice_cream_id';
+    protected $table = 'roles_masters';
+    protected $primaryKey = 'roles_id';
     protected $fillable = [
         'status_id',
         'name',
-        'flavor',
-        'color',
-        'price',
-        'stock',
-        'type',
     ];
-
 }
