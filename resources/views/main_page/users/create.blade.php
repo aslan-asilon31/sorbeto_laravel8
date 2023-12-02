@@ -42,6 +42,17 @@
                                 </div>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label class="font-weight-bold">Password </label>
+                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="" placeholder="Masukkan Password">
+                        
+                            <!-- error message untuk name -->
+                            @error('password')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
                        
                       <!-- /.card-body -->
                       <div class="card-footer">

@@ -24,11 +24,11 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => [
-                'required',
-                'string',
-                'max:191',
-            ],
+            // 'user_id' => [
+            //     'required',
+            //     'string',
+            //     'max:191',
+            // ],
             'name' => [
                 'required',
                 'string',
@@ -39,6 +39,11 @@ class UserRequest extends FormRequest
                 'email',
                 'max:191',
                 'unique:users,email',
+            ],
+            'password' => [
+                'required', 
+                'string', 
+                'min:8'
             ],
         ];
     }

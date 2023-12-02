@@ -10,6 +10,7 @@ use DataTables;
 use Illuminate\Support\Str;
 use App\Http\Requests\UserRequest;
 use App\Helpers\HistoryLog;
+use Hash;
 
 class UserController extends Controller
 {
@@ -118,22 +119,14 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $data = $request->validated();
-        // dd($data);
 
-        $module = 'USER-TABLE';
-        $dataHistoryLog = HistoryLog::afterStore($data, $module,);
-        dd('haaaaaaaaaaaaaaaa');
+        // dd('cekk data ud masuk blm');
 
-        if($dataHistoryLog){
-            $user = User::create([
-                'name'     => $request->name,
-                'email'   => $request->email
-            ]);
-        }else{
-            dd('ada yg error saat create data');
-        }
-
-
+        $user = User::create([
+            'name'     => $request->name,
+            'email'   => $request->email,
+            'password' => Hash::make($data['password']),
+        ]);
 
         if($user){
             //redirect dengan pesan sukses
@@ -169,6 +162,19 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
+    public function historylog(string $id)
+    {
+        
+        $query = "SELECT * FROM history_logs where key_id = $id";
+        $data = DB::connection('mysql')->select($query);
+
+        return view('main_page.users.historylog', compact('data'));
+
+
+      
+    }
+
+
     public function update(UserRequest $request, string $id)
     {
         $data_new = $request->validated();

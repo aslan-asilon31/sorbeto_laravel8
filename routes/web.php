@@ -33,6 +33,7 @@ Route::get('/employee', [EmployeeController::class, 'index'])->name('employees')
     Route::get('/users', [UserController::class, 'index'])->name('user.index');
     Route::get('/userslist', [UserController::class, 'getdata'])->name('user.list');
     Route::get('/user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
+    Route::get('/user/historylog/{user}', [UserController::class, 'historylog'])->name('user.historylog');
     Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
     Route::put('/user/update/{user}', [UserController::class, 'update'])->name('user.update');
 

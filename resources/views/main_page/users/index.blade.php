@@ -37,11 +37,11 @@
                         @foreach($users as $user)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->user_id }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>
-                                    <button class="btn btn-info" onclick="showUser({{ $user->user_id }})"> Log </button>
-                                    <a class="btn btn-success" href="{{ route('user.edit', $user->user_id) }}"> Edit  </a>
+                                    {{-- <a class="btn btn-primary" href="{{ route('user.historylog', $user->user_id) }}"> Log  </a> --}}
+                                    {{-- <a class="btn btn-success" href="{{ route('user.edit', $user->user_id) }}"> Edit  </a> --}}
                                     <button class="btn btn-danger" onclick="deleteUser({{ $user->user_id }})"> Delete </button>
                                 </td>
                             </tr>
