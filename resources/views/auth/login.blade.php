@@ -40,6 +40,18 @@
                         </div>
 
                         <div class="row mb-3">
+                            {{-- <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div> --}}
+                            <div class="g-recaptcha" data-sitekey="6Lc7LiQpAAAAAC_3-EkUGTgbCUW5fib5Ub5Jadzk"></div>
+                            {{-- <label for="" class="col-md-4 col-form-label text-md-end"></label> --}}
+                            <div class="col-md-6"> {!! htmlFormSnippet() !!} </div>
+                        </div>
+
+                        {{-- <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">Laravel Google Recaptcha</label>
+                            <div class="col-md-6"> {!! htmlFormSnippet() !!} </div>
+                        </div> --}}
+
+                        <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>

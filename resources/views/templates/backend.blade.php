@@ -6,8 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>@yield('title')</title>
 
+
+  <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+    async defer>
+  </script>
   
-  
+  <link rel="icon" href="{{ asset('sorbeto_logo.ico') }}" type="image/x-icon">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
@@ -17,6 +21,27 @@
   <link rel="stylesheet" href="{{ asset('assets_backend/AdminLTE-master/dist/css/adminlte.min.css'); }}">
   <link rel="stylesheet" href="{{ asset('assets_backend/AdminLTE-master/plugins/overlayScrollbars/css/OverlayScrollbars.min.css'); }}">
   @stack('css')
+
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  {{-- Google recaptcha --}}
+  {!! ReCaptcha::htmlScriptTagJsApi() !!}
+  {{-- End Google recaptcha --}}
+  
+  {{-- Google analytics --}}
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6JYRR55Q60"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-6JYRR55Q60');
+  </script>
+    {{-- End Google analytics --}}
+  
+
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -53,7 +78,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="assets_backend/AdminLTE-master/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{{ asset('sorbeto_logo.png'); }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Sorbeto</span>
     </a>
 

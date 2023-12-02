@@ -40,6 +40,9 @@ class UserRequest extends FormRequest
                 'max:191',
                 'unique:users,email',
             ],
+            'g-recaptcha-response' => [
+                'recaptcha',
+            ],
             // 'password' => [
             //     'required', 
             //     'string', 
