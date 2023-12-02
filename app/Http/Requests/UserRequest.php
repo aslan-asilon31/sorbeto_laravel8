@@ -40,11 +40,11 @@ class UserRequest extends FormRequest
                 'max:191',
                 'unique:users,email',
             ],
-            'password' => [
-                'required', 
-                'string', 
-                'min:8'
-            ],
+            // 'password' => [
+            //     'required', 
+            //     'string', 
+            //     'min:8'
+            // ],
         ];
     }
 }

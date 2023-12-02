@@ -11,29 +11,50 @@
         <div class="row">
             <div class="col-lg-12">
 
-                <table class="table table-bordered ">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Module</th>
-                            <th>Key ID</th>
-                            <th>Created By</th>
-                            <th>Updated At</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($data as $row)
+                <div class="card">
+                    <div class="card-header">
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body p-0">
+                      <table class="table table-sm">
+                        <thead>
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $row->module }}</td>
-                                <td>{{ $row->key_id }}</td>
-                                <td>{{ $row->user_create }}</td>
-                                <td>{{ $row->updated_at }}</td>
+                                <th>No</th>
+                                <th>Name</th>
+                                <th>Before</th>
+                                <th>After</th>
+                                <th>Created By</th>
+                                <th>Updated At</th>
                             </tr>
-                        @endforeach
+                        </thead>
+                        <tbody>
+                            @foreach ($data as $row)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ explode(':', $row->txt)[0] }}</td>
+                                    <td>
+                                        @php
+                                            // Split the string using '#' as the delimiter
+                                            $parts = explode('#', $row->txt);
                     
-                    </tbody>
-                </table>
+                                            // Extract the value after ':' in the first part
+                                            $value = explode(':', $parts[0])[1];
+                                        @endphp
+                    
+                                        {{ $value }}
+                                    </td>
+                                    <td>{{ explode('#', $row->txt)[1] }}</td>
+                                    <td>{{ $row->user_create ?: '-' }}</td>
+                                    <td>{{ $row->updated_at }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                      </table>
+                    </div>
+                    <!-- /.card-body -->
+                  </div>
+                  <!-- /.card -->
+                    
 
             </div>   
         </div>

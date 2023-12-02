@@ -5,12 +5,12 @@
 
 @section('content')
 
-<section class="content">
-        <div class="container-fluid">
-          <!-- Info boxes -->
-          <div class="row">
-              <div class="col-lg-12">
 
+<section class="content">
+    <div class="container-fluid">
+        <!-- Info boxes -->
+        <div class="row">
+              <div class="col-lg-12">
                 <button type="button" class="btn btn-primary btn-fw collapsible mb-3" style="width: 100%">Advanced Search</button>
                 <a href="{{ route('user.create') }}" type="button" class="btn btn-primary  mb-3" style="width: 100%">Add User <i class="fa fa-plus"></i> </a>
                 <div class="content" style="display: none; padding:20px; background-color:indigo;" >
@@ -23,6 +23,34 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="modal" id="progressModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4>Loading ...</h4>
+                            </div>
+
+                            <!-- Modal Body -->
+                            <div class="modal-body">
+
+                                <div class="progress" style="z-index: 99;">
+                                    <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" id="myBar"></div>
+                                </div>
+                            </div>
+
+                            <!-- Modal Footer -->
+                            <div class="modal-footer">
+                                <!-- Add any footer content if needed -->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
 
                 <table class="table table-bordered yajra-datatable">
                     <thead>
@@ -37,12 +65,18 @@
                         @foreach($users as $user)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $user->user_id }}</td>
+                                <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>
-                                    {{-- <a class="btn btn-primary" href="{{ route('user.historylog', $user->user_id) }}"> Log  </a> --}}
-                                    {{-- <a class="btn btn-success" href="{{ route('user.edit', $user->user_id) }}"> Edit  </a> --}}
-                                    <button class="btn btn-danger" onclick="deleteUser({{ $user->user_id }})"> Delete </button>
+                                    <a class=" btn-sm btn-primary" href="{{ route('user.historylog', $user->user_id) }}"> <i class="fa fa-wrench"></i>  </a>
+                                    <a class="btn btn-sm btn-success" href="{{ route('user.edit', $user->user_id) }}"> <i class="fa fa-edit"></i>  </a>
+                                    <form action="{{ route('user.delete', $user->user_id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <!-- Add your form fields and delete button here -->
+                                        <button class="btn btn-sm btn-danger" type="submit"><i class="fa fa-trash"></i> </button>
+                                    </form>
+                                    
                                 </td>
                             </tr>
                         @endforeach
@@ -78,6 +112,41 @@
 
 @push('js')
 
+
+
+<script>
+
+$(document).ready(function () {
+    $('.yajra-datatable').hide();
+    $('#progressModal').modal('show');
+    move();
+});
+
+    function move() {
+        var elem = document.getElementById("myBar");
+        var width = 0;
+        var id = setInterval(frame, 10);
+
+        function frame() {
+            if (width >= 100) {
+                clearInterval(id);
+                setTimeout(function () {
+                    $('#progressModal').modal('hide');
+                    $('.yajra-datatable').show();
+
+                }, 2000);
+            } else {
+                width++;
+                elem.style.width = width + "%";
+                elem.innerHTML = width + "%";
+            }
+        }
+
+    }
+
+</script>
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
@@ -97,6 +166,7 @@
                     d.search = $('input[type="search"]').val()
             }
         },
+        
         order: [
             [1, 'desc'] // Adjust the sorting based on your requirement
         ],

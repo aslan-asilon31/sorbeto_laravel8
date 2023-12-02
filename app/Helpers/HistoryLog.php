@@ -49,7 +49,7 @@ class HistoryLog {
                     'module'  => $module,
                     'key_id'    => $id,
                     'txt'  => $column.':'.$value_old.'#'.$value_new,
-                    'user_create'  => Auth::user()->name,
+                    'user_create'  => Auth::user() ? Auth::user()->name : ' ',
                     // 'txt'  => json_encode($changes),
                 ]);
             }

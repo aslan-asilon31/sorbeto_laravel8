@@ -17,6 +17,7 @@ class UserController extends Controller
     public function index(){
 
         $users = User::latest()->paginate(10);
+        // dd($users);
         return view('main_page.users.index', compact('users'));
 
     }
@@ -178,7 +179,6 @@ class UserController extends Controller
     public function update(UserRequest $request, string $id)
     {
         $data_new = $request->validated();
-        
         $query = "SELECT * FROM users where user_id = $id";
         $data_old = DB::connection('mysql')->select($query);
         $table = 'users';
@@ -211,8 +211,26 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $query = "SELECT * FROM users where user_id = $id";
+        $user = DB::connection('mysql')->select($query);
+    
+        // Check if the user exists
+        if (!$user) {
+            // Redirect with an error message
+            return redirect()->route('user.index')->with(['error' => 'User not found!']);
+        }
+    
+        // Assuming $user is an array, you need to extract the first element
+        $user = reset($user);
+    
+        // Delete the user using the user_id
+        DB::table('users')->where('user_id', $user->user_id)->delete();
+    
+        // Redirect with a success message
+        return redirect()->route('user.index')->with(['success' => 'Data Berhasil Dihapus!']);
     }
+    
+    
 }
