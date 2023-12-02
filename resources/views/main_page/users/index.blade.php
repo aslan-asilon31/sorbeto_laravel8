@@ -4,6 +4,7 @@
 @section('titleslug', ' User Page / List User')
 
 @section('content')
+@include('sweetalert::alert')
 
 
 <section class="content">

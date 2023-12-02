@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 use App\Http\Requests\UserRequest;
 use App\Helpers\HistoryLog;
 use Hash;
+use Alert;
 
 class UserController extends Controller
 {
@@ -191,32 +192,36 @@ class UserController extends Controller
     public function update(UserRequest $request, string $id)
     {
         $data_new = $request->validated();
-        $query = "SELECT * FROM users where user_id = $id";
-        $data_old = DB::connection('mysql')->select($query);
-        $table = 'users';
-        $module = 'USER-TABLE';
-        $dataHistoryLog = HistoryLog::afterUpdate($data_new, $data_old, $module, $id, $table);
-      
-        
-            // Temukan objek User berdasarkan ID
-            $user = User::find($id);
 
+        if(!empty($data_new)){
+            $query = "SELECT * FROM users where user_id = $id";
+            $data_old = DB::connection('mysql')->select($query);
+            $table = 'users';
+            $module = 'USER-TABLE';
+            $dataHistoryLog = HistoryLog::afterUpdate($data_new, $data_old, $module, $id, $table);
+          
+                $user = User::find($id);
+                if ($user) {
+                    // Update properti objek User
+                    $user->update([
+                        'name' => $request['name'],
+                        'email' => $request['email']
+                    ]);
+                    Alert::toast('Updated Success','success');
+                    return redirect()->route('user.index');
+                } else {
+                    Alert::toast('Updated Failed','error');
+                    return redirect()->back()->with('failed', 'Updated Failed!');
+                }
+    
+        }else{
+            Alert::toast('Error Toast','error');
+            return redirect()->back()->withInput();
 
-            if ($user) {
-                // Update properti objek User
-                $user->update([
-                    'name' => $data_new['name'],
-                    'email' => $data_new['email']
-                ]);
-        
-                // $user sekarang sudah diperbarui
-            } else {
-                // Handle jika objek User tidak ditemukan
-                dd('User not found.');
-            }
+        }
         
 
-        return view('main_page.users.index');
+        // return view('main_page.users.index');
         
     }
 

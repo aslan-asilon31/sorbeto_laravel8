@@ -38,7 +38,6 @@ Route::get('/employee', [EmployeeController::class, 'index'])->name('employees')
     Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
     Route::put('/user/update/{user}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/user/delete/{user}', [UserController::class, 'destroy'])->name('user.delete');
-
     // Route::put('/user/update/{user}', [UserController::class, 'update'])->name('user.update');
     Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
 

@@ -32,20 +32,20 @@
   
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-6JYRR55Q60"></script>
+
+
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-6JYRR55Q60');
   </script>
-    {{-- End Google analytics --}}
-  
-
+  {{-- End Google analytics --}}
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
-
+  
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-dark">

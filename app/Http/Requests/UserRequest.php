@@ -3,51 +3,41 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Validator;
+use Alert;
 
 class UserRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize()
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules()
     {
-        return [
-            // 'user_id' => [
-            //     'required',
-            //     'string',
-            //     'max:191',
-            // ],
-            'name' => [
-                'required',
-                'string',
-                'max:191',
-            ],
-            'email' => [
-                'required',
-                'email',
-                'max:191',
-                'unique:users,email',
-            ],
-            'g-recaptcha-response' => [
-                'recaptcha',
-            ],
-            // 'password' => [
-            //     'required', 
-            //     'string', 
-            //     'min:8'
-            // ],
-        ];
+        $validator = Validator::make($this->all(), [
+            'name' => ['required', 'string', 'max:191'],
+            'email' => ['required', 'email', 'max:191', 'unique:users,email'],
+        ]);
+
+        // dd($validator);
+
+        if ($validator->fails()) {
+            return [
+                'name' => ['required', 'string', 'max:191'],
+                'email' => ['required', 'email', 'max:191', 'unique:users,email'],
+            ];
+        } else {
+            return [
+                'name' => ['required', 'string', 'max:191'],
+                'email' => ['required', 'email', 'max:191', 'unique:users,email'],
+            ];
+        }
+
+        // If you want to return specific validation rules, you can do it like this:
+        // return [
+        //     'name' => ['required', 'string', 'max:191'],
+        //     'email' => ['required', 'email', 'max:191', 'unique:users,email'],
+        // ];
     }
 }

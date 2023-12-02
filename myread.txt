@@ -11,3 +11,7 @@ https://codelapan.com/post/google-recaptcha-laravel-8
 
 ============ documentation new release version github repo :
 http://semver.org/#
+
+
+https://dev.to/jeromew90/how-use-sweetalert2-in-laravel-8-using-composer-jki
+https://realrashid.github.io/sweet-alert/demo
